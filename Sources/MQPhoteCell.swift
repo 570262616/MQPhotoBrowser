@@ -44,19 +44,19 @@ class MQPhotoCell: UICollectionViewCell, UIScrollViewDelegate {
         self.imageView.frame = CGRect(x: 0, y: y, width: size.width, height: size.height)
         
         self.scrollView.setZoomScale(1.0, animated: false)
-        
-        self.progressView.center = self.contentView.center
     }
     
     private let progressView = MQProgressView(frame: .zero)
     
     func updateWithPhotoInfo(_ info: (UIImage?, URL?)?) {
         
+        self.progressView.center = CGPoint(x: self.bounds.midX, y: self.bounds.midY)
+        
         if let imageURL = info?.1 {
             
-            self.imageView.kf.setImage(with: imageURL, placeholder: info?.0, options: nil, progressBlock: { [weak self] received, total in
-                
-                self?.progressView.isHidden = false
+            self.progressView.isHidden = false
+            
+            self.imageView.kf.setImage(with: imageURL, progressBlock: { [weak self] received, total in
                 
                 let progress = CGFloat(received) / CGFloat(total)
                 
