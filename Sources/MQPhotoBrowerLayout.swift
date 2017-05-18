@@ -27,29 +27,43 @@ class MQPhotoBrowerLayout: UICollectionViewFlowLayout {
         self.minimumInteritemSpacing = 0.0
     }
     
+    override func prepare() {
+        
+        super.prepare()
+        
+        guard let collectionView = self.collectionView else { return }
+        
+        self.pageWidth = collectionView.bounds.width + self.minimumLineSpacing
+        
+        self.minPageIndex = 0
+        
+        self.maxPageIndex = Int((self.collectionViewContentSize.width + self.minimumLineSpacing) / self.pageWidth)
+    }
+    
+    private var pageWidth: CGFloat = 0
+    
+    private var minPageIndex: Int = 0
+    private var maxPageIndex: Int = 0
+    
     override func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
         
         guard let collectionView = self.collectionView else { return .zero }
         
-        let pageWidth = collectionView.bounds.width + self.minimumLineSpacing
+        let nearbyPage = collectionView.contentOffset.x / self.pageWidth
         
-        let maxPageIndex = Int((self.collectionViewContentSize.width + self.minimumLineSpacing) / pageWidth)
+        let proposedPage = proposedContentOffset.x / self.pageWidth
         
-        let intentIndex: Int
+        let intentIndex: Int = {
+            if velocity.x.isLess(than: 0) {
+                return max(Int(nearbyPage), self.minPageIndex)
+            } else if velocity.x.isGreat(than: 0) {
+                return min(Int(nearbyPage) + 1, self.maxPageIndex)
+            } else {
+                return Int(proposedPage + 0.5)
+            }
+        }()
         
-        let nearbyPage = collectionView.contentOffset.x / pageWidth
-        
-        let proposedPage = proposedContentOffset.x / pageWidth + 0.5
-        
-        if velocity.x.isLess(than: 0) {
-            intentIndex = max(Int(nearbyPage), 0)
-        } else if velocity.x.isGreat(than: 0) {
-            intentIndex = min(Int(nearbyPage) + 1, maxPageIndex)
-        } else {
-            intentIndex = Int(proposedPage)
-        }
-        
-        return CGPoint(x: CGFloat(intentIndex) * pageWidth, y: 0)
+        return CGPoint(x: CGFloat(intentIndex) * self.pageWidth, y: 0)
     }
 }
 
