@@ -1,0 +1,6 @@
+framework module MQPhotoBrower {
+  umbrella header "MQPhotoBrower-umbrella.h"
+
+  export *
+  module * { export * }
+}

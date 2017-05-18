@@ -1,0 +1,19 @@
+PODS:
+  - Kingfisher (3.6.2)
+  - MQPhotoBrower (0.0.1):
+    - Kingfisher
+
+DEPENDENCIES:
+  - MQPhotoBrower (from `../../MQPhotoBrower`)
+
+EXTERNAL SOURCES:
+  MQPhotoBrower:
+    :path: ../../MQPhotoBrower
+
+SPEC CHECKSUMS:
+  Kingfisher: 2c94e72c6830622c71d06adf4ea024c37d316830
+  MQPhotoBrower: da7205d3d09f3a1fd639ee897c0ad4bf8720c5b6
+
+PODFILE CHECKSUM: bd89740a36ebd324c71991bdaed68c97d39ffa33
+
+COCOAPODS: 1.2.0

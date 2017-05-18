@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="RSs-vQ-AnC">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Photo Brower View Controller-->
+        <scene sceneID="NAm-NQ-zVH">
+            <objects>
+                <viewController id="RSs-vQ-AnC" customClass="MQPhotoBrowerViewController" customModule="MQPhotoBrower" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ere-nc-tyJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="2dh-bX-HY4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ige-6A-0cv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" indicatorStyle="black" dataMode="prototypes" prefetchingEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KY2-D2-Abm">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <collectionViewLayout key="collectionViewLayout" id="3vZ-QQ-cY0" customClass="MQPhotoBrowerLayout" customModule="MQPhotoBrower" customModuleProvider="target"/>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="photoCell" id="Y1P-CJ-ZpI" customClass="MQPhotoCell" customModule="MQPhotoBrower" customModuleProvider="target">
+                                        <rect key="frame" x="12.5" y="0.0" width="350" height="350"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="350" height="350"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" maximumZoomScale="2" translatesAutoresizingMaskIntoConstraints="NO" id="k80-4W-zQ4">
+                                                    <rect key="frame" x="0.0" y="0.0" width="350" height="350"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="Y1P-CJ-ZpI" id="01b-gR-hhU"/>
+                                                    </connections>
+                                                </scrollView>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="k80-4W-zQ4" secondAttribute="bottom" id="6kQ-wr-CIV"/>
+                                            <constraint firstItem="k80-4W-zQ4" firstAttribute="top" secondItem="Y1P-CJ-ZpI" secondAttribute="top" id="LY9-pu-M3G"/>
+                                            <constraint firstItem="k80-4W-zQ4" firstAttribute="leading" secondItem="Y1P-CJ-ZpI" secondAttribute="leading" id="sTi-dc-B1b"/>
+                                            <constraint firstAttribute="trailing" secondItem="k80-4W-zQ4" secondAttribute="trailing" id="ufW-JW-RU6"/>
+                                        </constraints>
+                                        <size key="customSize" width="350" height="350"/>
+                                        <connections>
+                                            <outlet property="scrollView" destination="k80-4W-zQ4" id="0Qc-g8-9nj"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="10" currentPage="4" translatesAutoresizingMaskIntoConstraints="NO" id="oB1-1B-7st">
+                                <rect key="frame" x="112" y="610" width="151" height="37"/>
+                                <color key="pageIndicatorTintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="currentPageIndicatorTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </pageControl>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="2dh-bX-HY4" firstAttribute="top" secondItem="KY2-D2-Abm" secondAttribute="bottom" id="TkO-YZ-NPh"/>
+                            <constraint firstAttribute="trailing" secondItem="KY2-D2-Abm" secondAttribute="trailing" id="Zs7-Ow-ASA"/>
+                            <constraint firstItem="2dh-bX-HY4" firstAttribute="top" secondItem="oB1-1B-7st" secondAttribute="bottom" constant="20" id="eXV-9K-Kfm"/>
+                            <constraint firstItem="oB1-1B-7st" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Ige-6A-0cv" secondAttribute="leading" constant="20" id="ilQ-OT-g6a"/>
+                            <constraint firstItem="KY2-D2-Abm" firstAttribute="top" secondItem="Ige-6A-0cv" secondAttribute="top" id="jfT-pC-pQN"/>
+                            <constraint firstItem="KY2-D2-Abm" firstAttribute="leading" secondItem="Ige-6A-0cv" secondAttribute="leading" id="kss-si-iBq"/>
+                            <constraint firstItem="oB1-1B-7st" firstAttribute="centerX" secondItem="Ige-6A-0cv" secondAttribute="centerX" id="t4Q-wg-sGf"/>
+                        </constraints>
+                    </view>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <connections>
+                        <outlet property="collectionView" destination="KY2-D2-Abm" id="VbI-zw-MTo"/>
+                        <outlet property="pageControl" destination="oB1-1B-7st" id="mwn-bE-2YS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fk1-lz-fJI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="0.80000000000000004" y="126.38680659670166"/>
+        </scene>
+    </scenes>
+</document>

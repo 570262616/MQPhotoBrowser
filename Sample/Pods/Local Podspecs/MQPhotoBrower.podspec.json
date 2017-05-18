@@ -1,0 +1,28 @@
+{
+  "name": "MQPhotoBrower",
+  "version": "0.0.1",
+  "license": "MIT",
+  "summary": "Elegant photo browser, Write in Swift.",
+  "homepage": "https://github.com/Arror/MQPhotoBrower",
+  "authors": {
+    "Arror": "hallo.maqiang@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/Arror/MQPhotoBrower.git",
+    "tag": "0.0.1"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "Sources/*.swift",
+  "resource_bundles": {
+    "MQPhotoBrower": [
+      "Assets/*.storyboard"
+    ]
+  },
+  "dependencies": {
+    "Kingfisher": [
+
+    ]
+  }
+}
