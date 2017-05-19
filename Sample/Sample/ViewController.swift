@@ -83,7 +83,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     func photoBrower(_ photoBrower: MQPhotoBrowerViewController, photoURLAt index: Int) -> URL? {
         
-        return URL(string: self.imageURLStrings[index])
+        return nil
+//        return URL(string: self.imageURLStrings[index])
     }
     
     func photoBrower(_ photoBrower: MQPhotoBrowerViewController, longPressWith image: UIImage?, url: URL?) {
