@@ -148,8 +148,8 @@ class MQPhotoCell: UICollectionViewCell, UIScrollViewDelegate {
         }
     }
 
-    private var beganBounds: CGRect = .zero
-    private var beganCenter: CGPoint = .zero
+    private var beganFrame: CGRect = .zero
+    private var beganPoint: CGPoint = .zero
     
     var photoCellUpdateScale: ((MQPhotoCell, CGFloat, Bool) -> Void)?
     
@@ -158,23 +158,26 @@ class MQPhotoCell: UICollectionViewCell, UIScrollViewDelegate {
         switch sender.state {
         case .began:
             
-            self.beganBounds = self.imageView.bounds
-            self.beganCenter = self.imageView.center
+            self.beganFrame = self.imageView.frame
+            self.beganPoint = sender.location(in: self.scrollView)
             
         case .changed:
             
             let offset = sender.translation(in: self.scrollView)
+            let location = sender.location(in: self.scrollView)
             
             let scale = min(1.0, max(0.3, 1.0 - offset.y / self.scrollView.bounds.height))
             
-            let w = self.beganBounds.width * scale
-            let h = self.beganBounds.height * scale
+            let w = self.beganFrame.width * scale
+            let h = self.beganFrame.height * scale
             
-            let centerX = self.beganCenter.x + offset.x
-            let centerY = self.beganCenter.y + offset.y
+            let dW = self.beganPoint.x - self.beganFrame.origin.x
+            let dH = self.beganPoint.y - self.beganFrame.origin.y
             
-            self.imageView.bounds = CGRect(x: 0.0, y: 0.0, width: w, height: h)
-            self.imageView.center = CGPoint(x: centerX, y: centerY)
+            let x = location.x - dW * scale
+            let y = location.y - dH * scale
+            
+            self.imageView.frame = CGRect(x: x, y: y, width: w, height: h)
             
             self.photoCellUpdateScale?(self, scale, false)
             
@@ -200,9 +203,7 @@ class MQPhotoCell: UICollectionViewCell, UIScrollViewDelegate {
         
         UIView.animate(withDuration: 0.25) {
             
-            self.imageView.bounds = self.beganBounds
-            
-            self.imageView.center = self.beganCenter
+            self.imageView.frame = self.beganFrame
         }
     }
     
