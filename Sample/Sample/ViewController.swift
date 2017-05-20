@@ -68,7 +68,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        MQPhotoBrower.show(by: self, currentIndex: indexPath.row)
+        MQPhotoBrower.show(delegate: self, currentIndex: indexPath.row)
     }
     
     func numberOfPhotosInPhotoBrower(_ photoBrower: MQPhotoBrower) -> Int {
@@ -84,7 +84,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func photoBrower(_ photoBrower: MQPhotoBrower, photoURLAt index: Int) -> URL? {
         
         return nil
-//        return URL(string: self.imageURLStrings[index])
     }
     
     func photoBrower(_ photoBrower: MQPhotoBrower, longPressWith image: UIImage?, url: URL?) {

@@ -71,7 +71,7 @@ public class MQPhotoBrower: UIViewController {
         
         self.adaptor.photoCellSingleTapAction = { _ in
             
-            self.dismiss(animated: true) { self.sourceView?.isHidden = false }
+            MQPhotoBrowerWindowManager.shared.dismiss()
         }
         
         self.adaptor.photoCellLongPressAction = { _, image, url in
@@ -81,17 +81,15 @@ public class MQPhotoBrower: UIViewController {
         
         self.adaptor.photoCellUpdateScale = { _, scale, animated in
             
-            let controller = self.presentationController as? MQPresentationController
-            
             let alpha = scale * scale
             
             if animated {
                 
-                UIView.animate(withDuration: 0.25) { controller?.dimmingView?.alpha = alpha }
+                UIView.animate(withDuration: 0.25) { MQPhotoBrowerWindowManager.shared.dimmingViewAlpha = alpha }
                 
             } else {
                 
-                controller?.dimmingView?.alpha = alpha
+                MQPhotoBrowerWindowManager.shared.dimmingViewAlpha = alpha
             }
         }
         
@@ -115,7 +113,7 @@ public class MQPhotoBrower: UIViewController {
 
 extension MQPhotoBrower {
     
-    public static func makePhotoBrower() -> MQPhotoBrower {
+    static func makePhotoBrower() -> MQPhotoBrower {
         
         guard
             let photoBrowerVC = UIStoryboard(name: "MQPhotoBrower", bundle: MQBundle.main).instantiateInitialViewController() as? MQPhotoBrower else {
@@ -126,23 +124,16 @@ extension MQPhotoBrower {
         return photoBrowerVC
     }
     
-    @discardableResult
-    public static func show<HostViewController: UIViewController>(by hostVC: HostViewController, currentIndex: Int) -> MQPhotoBrower where HostViewController: MQPhotoBrowerDelegate {
+    public static func show(delegate: MQPhotoBrowerDelegate?, currentIndex: Int) {
         
         let vc = self.makePhotoBrower()
         
-        guard (0..<hostVC.numberOfPhotosInPhotoBrower(vc)).contains(currentIndex) else { return vc }
+        guard let count = delegate?.numberOfPhotosInPhotoBrower(vc), (0..<count).contains(currentIndex) else { return }
         
-        vc.delegate = hostVC
+        vc.delegate = delegate
         
         vc.currentIndex = currentIndex
         
-        vc.modalPresentationStyle = .custom
-        
-        vc.transitioningDelegate = vc
-        
-        hostVC.present(vc, animated: true, completion: nil)
-        
-        return vc
+        MQPhotoBrowerWindowManager.shared.show(withRootViewController: vc)
     }
 }
