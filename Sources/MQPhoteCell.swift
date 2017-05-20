@@ -244,8 +244,8 @@ extension MQPhotoCell: UIGestureRecognizerDelegate {
         if abs(v.y).isLess(than: abs(v.x)) {
             return false
         }
-
-        if self.scrollView.contentOffset.y.isLess(than: 0.0) {
+        
+        if self.scrollView.contentOffset.y.isGreat(than: 0.0) {
             return false
         }
         

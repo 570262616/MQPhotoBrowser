@@ -67,7 +67,7 @@ class MQPhotoBrowerLayout: UICollectionViewFlowLayout {
     }
 }
 
-fileprivate extension CGFloat {
+extension CGFloat {
     
     func isGreat(than other: CGFloat) -> Bool {
         
