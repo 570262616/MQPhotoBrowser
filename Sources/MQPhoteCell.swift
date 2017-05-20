@@ -52,14 +52,15 @@ class MQPhotoCell: UICollectionViewCell, UIScrollViewDelegate {
         
         self.progressView.center = CGPoint(x: self.bounds.midX, y: self.bounds.midY)
         
-        if let imageURL = info?.1 {
+        self.progressView.isHidden = false
+        
+        self.imageView.kf.setImage(with: info?.1, placeholder: info?.0, progressBlock: { [weak self] received, total in
             
-            self.progressView.isHidden = false
+            DispatchQueue.main.async {
+                
+                self?.progressView.progress = CGFloat(received) / CGFloat(total)
+            }
             
-            self.imageView.kf.setImage(with: imageURL, progressBlock: { [weak self] received, total in
-                
-                DispatchQueue.main.async { self?.progressView.progress = CGFloat(received) / CGFloat(total) }
-                
             }, completionHandler: { [weak self] _ in
                 
                 DispatchQueue.main.async {
@@ -68,14 +69,7 @@ class MQPhotoCell: UICollectionViewCell, UIScrollViewDelegate {
                     
                     self?.updateLayout()
                 }
-            })
-            
-        } else {
-            
-            self.imageView.image = info?.0
-            
-            self.updateLayout()
-        }
+        })
     }
     
     override func prepareForReuse() {
