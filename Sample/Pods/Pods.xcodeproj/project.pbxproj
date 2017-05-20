@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		020892121F1050D1AB48050E49A5785F /* MQPhotoBrowerAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58942DC991D19C6A24CB466424041D8E /* MQPhotoBrowerAdapter.swift */; };
 		0E9CC28AC8E34FE8E1C87E933E04BC7A /* ImageProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449745419F19FD32556B5DB4C4713E19 /* ImageProcessor.swift */; };
-		16CC4B2D311CCC5FB403EA489FEC1E74 /* MQPhotoBrowerTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEAC2EBA1E0BE3D5C5351022D71B589 /* MQPhotoBrowerTransition.swift */; };
 		179523942E7D1E3EB210EF05E2C7AE79 /* Kingfisher.h in Headers */ = {isa = PBXBuildFile; fileRef = 814A249890448FEA6045B315BCF3CBDD /* Kingfisher.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		18E94342CDAC233BF936F3891BDCB5DB /* MQBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35238CC78D0AB88D8EC4E89463216A6 /* MQBundle.swift */; };
 		22DA2F8D62DC5BEAA9C33BD1BC8790B9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C779353D21C55C88E470FE9E01220DE /* Foundation.framework */; };
@@ -17,7 +16,6 @@
 		33395912F2FFA355C4C36B7EDEAA3DA7 /* ImageView+Kingfisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EACA73146F2EFD5728BDDE27435FBD5 /* ImageView+Kingfisher.swift */; };
 		33A14E817C0FA585D5DA3A55E453299D /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC672E8EA725C5D07B841DD0564BE8A /* Image.swift */; };
 		3414E1D9CB15149A296E16C45967B021 /* ImagePrefetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = A095EF160FF9234364CDD94B8926E24A /* ImagePrefetcher.swift */; };
-		34233A577EDC013EA26E06AA8AB29A6A /* MQPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBB30BD4D5DF8A58C43F569BDE66456 /* MQPresentationController.swift */; };
 		342AE33215135AD56B73580012DC22AB /* AnimatedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F4491E340CD8AFA20CA333A7248C0A /* AnimatedImageView.swift */; };
 		378B44CAA91C2106076668FDE72E1E02 /* KingfisherOptionsInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F836E9F331D1DFAA871B794EC40647 /* KingfisherOptionsInfo.swift */; };
 		4089E39F76F86466B8DDD39A1C1ABB6B /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59DB5A84662EBAFEC776E1D05FC2A56 /* Filter.swift */; };
@@ -30,7 +28,6 @@
 		70BC4EE91ED0326500A09251 /* MQPhotoBrowerWindowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70BC4EE81ED0326500A09251 /* MQPhotoBrowerWindowManager.swift */; };
 		7636F846675C9F4ED96E00C6C19A4890 /* KingfisherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB1ACC8AAF2B55915F99167EE149FA6 /* KingfisherManager.swift */; };
 		7868FF7C7FA1953AED9864D844D8F95C /* Pods-Sample-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AF50723EE695E440CDA214119EF2C70 /* Pods-Sample-dummy.m */; };
-		790DEE5EEC39AD85541CCD0DCAFB9251 /* MQTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DE9930BBC9F520D34370DE945F4266 /* MQTransitionAnimator.swift */; };
 		86B7DA678C8705523C300947117C0706 /* ImageTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1EE6FB137B9949B921A201014D9660 /* ImageTransition.swift */; };
 		8DA7E6883118CB3C8132B64D3D43AE0B /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCAABA051F2B62FEC94F6629032960D /* Resource.swift */; };
 		92136C6584624998D5005F46C70A628B /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A82F245F8ACE5C246E5988E75067AA27 /* CFNetwork.framework */; };
@@ -85,7 +82,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0BBB30BD4D5DF8A58C43F569BDE66456 /* MQPresentationController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MQPresentationController.swift; sourceTree = "<group>"; };
 		0CCAABA051F2B62FEC94F6629032960D /* Resource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Resource.swift; path = Sources/Resource.swift; sourceTree = "<group>"; };
 		0EACA73146F2EFD5728BDDE27435FBD5 /* ImageView+Kingfisher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ImageView+Kingfisher.swift"; path = "Sources/ImageView+Kingfisher.swift"; sourceTree = "<group>"; };
 		161FD1626938094EEC6BF57530EDB6DA /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -98,7 +94,6 @@
 		40F4491E340CD8AFA20CA333A7248C0A /* AnimatedImageView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AnimatedImageView.swift; path = Sources/AnimatedImageView.swift; sourceTree = "<group>"; };
 		449745419F19FD32556B5DB4C4713E19 /* ImageProcessor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageProcessor.swift; path = Sources/ImageProcessor.swift; sourceTree = "<group>"; };
 		459670BDD37BF55AAA7D34C8DF426A99 /* MQPhotoBrower-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MQPhotoBrower-umbrella.h"; sourceTree = "<group>"; };
-		47DE9930BBC9F520D34370DE945F4266 /* MQTransitionAnimator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MQTransitionAnimator.swift; sourceTree = "<group>"; };
 		4AF50723EE695E440CDA214119EF2C70 /* Pods-Sample-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Sample-dummy.m"; sourceTree = "<group>"; };
 		4F78CCC4E543AE1ACD02EA7C0B0927E5 /* Kingfisher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Kingfisher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5207B9BA1FAC60A316B91128301138B6 /* Kingfisher.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Kingfisher.modulemap; sourceTree = "<group>"; };
@@ -119,7 +114,6 @@
 		9856B231053FF41FC9B14ACCC6F9215C /* Kingfisher-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Kingfisher-dummy.m"; sourceTree = "<group>"; };
 		9C896AB03AD02637A2108FF27D207683 /* Pods-Sample-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Sample-frameworks.sh"; sourceTree = "<group>"; };
 		9DE6AD548C8531F1E89A4AC6B1C6B3A8 /* Box.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Box.swift; path = Sources/Box.swift; sourceTree = "<group>"; };
-		9DEAC2EBA1E0BE3D5C5351022D71B589 /* MQPhotoBrowerTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MQPhotoBrowerTransition.swift; sourceTree = "<group>"; };
 		9E4022814E31F041CA8E6FFA328C8639 /* UIButton+Kingfisher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIButton+Kingfisher.swift"; path = "Sources/UIButton+Kingfisher.swift"; sourceTree = "<group>"; };
 		9EC672E8EA725C5D07B841DD0564BE8A /* Image.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Image.swift; path = Sources/Image.swift; sourceTree = "<group>"; };
 		A095EF160FF9234364CDD94B8926E24A /* ImagePrefetcher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImagePrefetcher.swift; path = Sources/ImagePrefetcher.swift; sourceTree = "<group>"; };
@@ -245,11 +239,8 @@
 				A95D2D3FF8B888FBA096A2057EFD5898 /* MQPhoteCell.swift */,
 				58942DC991D19C6A24CB466424041D8E /* MQPhotoBrowerAdapter.swift */,
 				B2375CA7EAAA3B41491C5894EB7C9565 /* MQPhotoBrowerLayout.swift */,
-				9DEAC2EBA1E0BE3D5C5351022D71B589 /* MQPhotoBrowerTransition.swift */,
 				3413BE8DBE33F85A858FFA7DD5E4CBF5 /* MQPhotoBrower.swift */,
-				0BBB30BD4D5DF8A58C43F569BDE66456 /* MQPresentationController.swift */,
 				D6B8F9B3274E23E43E005F8F45F27FF0 /* MQProgressView.swift */,
-				47DE9930BBC9F520D34370DE945F4266 /* MQTransitionAnimator.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -543,11 +534,8 @@
 				020892121F1050D1AB48050E49A5785F /* MQPhotoBrowerAdapter.swift in Sources */,
 				A3FAB42ADF17FA0E37AEFD27B9311F80 /* MQPhotoBrowerLayout.swift in Sources */,
 				70BC4EE91ED0326500A09251 /* MQPhotoBrowerWindowManager.swift in Sources */,
-				16CC4B2D311CCC5FB403EA489FEC1E74 /* MQPhotoBrowerTransition.swift in Sources */,
 				6CC8B4C9826338F847B66668FDAAA541 /* MQPhotoBrower.swift in Sources */,
-				34233A577EDC013EA26E06AA8AB29A6A /* MQPresentationController.swift in Sources */,
 				DE9DA26679752BCDD5599AC96C05D40D /* MQProgressView.swift in Sources */,
-				790DEE5EEC39AD85541CCD0DCAFB9251 /* MQTransitionAnimator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
