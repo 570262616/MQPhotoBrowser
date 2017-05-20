@@ -85,11 +85,11 @@ public class MQPhotoBrower: UIViewController {
             
             if animated {
                 
-                UIView.animate(withDuration: 0.25) { MQPhotoBrowerWindowManager.shared.dimmingViewAlpha = alpha }
+                UIView.animate(withDuration: 0.25) { MQPhotoBrowerWindowManager.shared.updateDimmingViewAlpha(alpha) }
                 
             } else {
                 
-                MQPhotoBrowerWindowManager.shared.dimmingViewAlpha = alpha
+                MQPhotoBrowerWindowManager.shared.updateDimmingViewAlpha(alpha)
             }
         }
         

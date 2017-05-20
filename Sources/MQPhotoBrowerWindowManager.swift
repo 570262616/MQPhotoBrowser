@@ -18,7 +18,7 @@ class MQPhotoBrowerWindowManager {
             
             self.addSubview(self.dimmingView)
             
-            self.backgroundColor = .clear
+            self.windowLevel = UIWindowLevelStatusBar + 1.0
         }
         
         required init?(coder aDecoder: NSCoder) {
@@ -26,35 +26,40 @@ class MQPhotoBrowerWindowManager {
         }
     }
     
-    private init() { self.photoBrowerWindow = nil }
+    private init() { self.window = nil }
     
-    private var photoBrowerWindow: MQPhotoBrowerWindowManager.MQPhotoBrowerWindow?
+    private var window: MQPhotoBrowerWindowManager.MQPhotoBrowerWindow?
     
     static let shared = MQPhotoBrowerWindowManager()
     
-    var dimmingViewAlpha: CGFloat {
-        get {
-            return self.photoBrowerWindow?.dimmingView.alpha ?? 0
-        }
-        set {
-            self.photoBrowerWindow?.dimmingView.alpha = newValue
-        }
+    private func makeFullScreenWindow() -> MQPhotoBrowerWindow {
+        
+        let screenSize = UIScreen.main.bounds.size
+        
+        let frame = CGRect(origin: .zero, size: CGSize(width: screenSize.width, height: screenSize.height + 1.0))
+        
+        return MQPhotoBrowerWindowManager.MQPhotoBrowerWindow(frame: frame)
+    }
+    
+    func updateDimmingViewAlpha(_ alpha: CGFloat) {
+        
+        self.window?.dimmingView.alpha = alpha
     }
     
     func show(withRootViewController viewController: UIViewController) {
         
-        let window = MQPhotoBrowerWindowManager.MQPhotoBrowerWindow(frame: UIScreen.main.bounds)
+        let window = self.makeFullScreenWindow()
         
         window.rootViewController = viewController
         
         window.makeKeyAndVisible()
         
-        self.photoBrowerWindow = window
+        self.window = window
     }
     
     func dismiss() {
         
-        self.photoBrowerWindow = nil
+        self.window = nil
         
         UIApplication.shared.keyWindow?.makeKeyAndVisible()
     }
