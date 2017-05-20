@@ -67,7 +67,14 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="K2P-q2-9w2" secondAttribute="bottom" id="rjP-Ys-EBY"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Sample" id="URo-D1-Jbv"/>
+                    <navigationItem key="navigationItem" title="Sample" id="URo-D1-Jbv">
+                        <barButtonItem key="rightBarButtonItem" title="Clear Cache" id="jv6-dw-T2O">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="clearCacheButtonTapped:" destination="BYZ-38-t0r" id="fjT-fZ-6g7"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="K2P-q2-9w2" id="8Ir-aQ-yfG"/>
                     </connections>

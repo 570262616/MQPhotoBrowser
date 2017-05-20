@@ -8,6 +8,7 @@
 
 import UIKit
 import MQPhotoBrower
+import Kingfisher
 
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, MQPhotoBrowerDelegate {
 
@@ -39,6 +40,23 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    @IBAction func clearCacheButtonTapped(_ sender: UIBarButtonItem) {
+        
+        KingfisherManager.shared.cache.clearMemoryCache()
+        
+        KingfisherManager.shared.cache.calculateDiskCacheSize { size in
+            
+            KingfisherManager.shared.cache.clearDiskCache {
+                
+                let alert = UIAlertController(title: "Clear Cache", message: String(format: "%.1f MB", Double(size / 1024 / 1024)), preferredStyle: .alert)
+                
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                
+                self.present(alert, animated: true, completion: nil)
+            }
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
