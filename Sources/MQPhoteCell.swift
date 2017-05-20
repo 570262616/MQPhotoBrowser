@@ -50,7 +50,11 @@ class MQPhotoCell: UICollectionViewCell, UIScrollViewDelegate {
     
     func updateWithPhotoInfo(_ info: (UIImage?, URL?)?) {
         
+        self.contentView.bringSubview(toFront: self.progressView)
+        
         self.progressView.center = CGPoint(x: self.bounds.midX, y: self.bounds.midY)
+        
+        self.progressView.progress = 0.0
         
         self.progressView.isHidden = false
         
