@@ -94,6 +94,13 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     func photoBrower(_ photoBrower: MQPhotoBrowerViewController, currentSourceViewFor index: Int) -> UIImageView? {
         
+        let indexPath = IndexPath(row: index, section: 0)
+        
+        if !self.collectionView.indexPathsForVisibleItems.contains(indexPath) {
+            
+            self.collectionView.scrollToItem(at: indexPath, at: .centeredVertically, animated: false)
+        }
+        
         let cell = self.collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? SampleCell
         
         return cell?.imageView
