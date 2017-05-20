@@ -1,6 +1,6 @@
 import UIKit
 
-extension MQPhotoBrowerViewController: UIViewControllerTransitioningDelegate {
+extension MQPhotoBrower: UIViewControllerTransitioningDelegate {
     
     public func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         

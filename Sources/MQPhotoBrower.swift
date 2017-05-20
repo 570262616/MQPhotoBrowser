@@ -2,21 +2,18 @@ import UIKit
 
 public protocol MQPhotoBrowerDelegate: class {
     
-    func photoBrower(_ photoBrower: MQPhotoBrowerViewController, longPressWith image: UIImage?, url: URL?)
+    func photoBrower(_ photoBrower: MQPhotoBrower, longPressWith image: UIImage?, url: URL?)
     
-    func photoBrower(_ photoBrower: MQPhotoBrowerViewController, currentSourceViewFor index: Int) -> UIImageView?
+    func numberOfPhotosInPhotoBrower(_ photoBrower: MQPhotoBrower) -> Int
+    
+    func photoBrower(_ photoBrower: MQPhotoBrower, photoAt index: Int) -> UIImage?
+    
+    func photoBrower(_ photoBrower: MQPhotoBrower, photoURLAt index: Int) -> URL?
+    
+    func photoBrower(_ photoBrower: MQPhotoBrower, currentSourceViewFor index: Int) -> UIImageView?
 }
 
-public protocol MQPhotoBrowerDataSource: class {
-    
-    func numberOfPhotosInPhotoBrower(_ photoBrower: MQPhotoBrowerViewController) -> Int
-    
-    func photoBrower(_ photoBrower: MQPhotoBrowerViewController, photoAt index: Int) -> UIImage?
-    
-    func photoBrower(_ photoBrower: MQPhotoBrowerViewController, photoURLAt index: Int) -> URL?
-}
-
-public class MQPhotoBrowerViewController: UIViewController {
+public class MQPhotoBrower: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var pageControl: UIPageControl!
@@ -24,7 +21,6 @@ public class MQPhotoBrowerViewController: UIViewController {
     private let adaptor = MQPhotoBrowerAdapter()
     
     public weak var delegate: MQPhotoBrowerDelegate?
-    public weak var dataSource: MQPhotoBrowerDataSource?
     
     public var currentIndex: Int = 0 {
         didSet {
@@ -54,7 +50,7 @@ public class MQPhotoBrowerViewController: UIViewController {
         
         self.adaptor.numberOfPhotoBlock = { _ in
             
-            return self.dataSource?.numberOfPhotosInPhotoBrower(self) ?? 0
+            return self.delegate?.numberOfPhotosInPhotoBrower(self) ?? 0
         }
         
         self.adaptor.currentIndexBlock = { _, index in
@@ -66,9 +62,9 @@ public class MQPhotoBrowerViewController: UIViewController {
         
         self.adaptor.updateCellBlock = { _, index in
             
-            let image = self.dataSource?.photoBrower(self, photoAt: index)
+            let image = self.delegate?.photoBrower(self, photoAt: index)
             
-            let url = self.dataSource?.photoBrower(self, photoURLAt: index)
+            let url = self.delegate?.photoBrower(self, photoURLAt: index)
             
             return (image, url)
         }
@@ -110,19 +106,19 @@ public class MQPhotoBrowerViewController: UIViewController {
         super.viewWillAppear(animated)
         self.collectionView.reloadData()
         
-        self.pageControl.numberOfPages = self.dataSource?.numberOfPhotosInPhotoBrower(self) ?? 0
+        self.pageControl.numberOfPages = self.delegate?.numberOfPhotosInPhotoBrower(self) ?? 0
         self.pageControl.currentPage = self.currentIndex
     }
     
     public override var preferredStatusBarStyle: UIStatusBarStyle { return self.presentingViewController?.preferredStatusBarStyle ?? .default }
 }
 
-extension MQPhotoBrowerViewController {
+extension MQPhotoBrower {
     
-    public static func makePhotoBrower() -> MQPhotoBrowerViewController {
+    public static func makePhotoBrower() -> MQPhotoBrower {
         
         guard
-            let photoBrowerVC = UIStoryboard(name: "MQPhotoBrower", bundle: MQBundle.main).instantiateInitialViewController() as? MQPhotoBrowerViewController else {
+            let photoBrowerVC = UIStoryboard(name: "MQPhotoBrower", bundle: MQBundle.main).instantiateInitialViewController() as? MQPhotoBrower else {
                 
                 fatalError("Can't load MQPhotoBrowerViewController from story board.")
         }
@@ -131,13 +127,11 @@ extension MQPhotoBrowerViewController {
     }
     
     @discardableResult
-    public static func show<HostViewController: UIViewController>(by hostVC: HostViewController, currentIndex: Int) -> MQPhotoBrowerViewController where HostViewController: MQPhotoBrowerDataSource & MQPhotoBrowerDelegate {
+    public static func show<HostViewController: UIViewController>(by hostVC: HostViewController, currentIndex: Int) -> MQPhotoBrower where HostViewController: MQPhotoBrowerDelegate {
         
         let vc = self.makePhotoBrower()
         
         guard (0..<hostVC.numberOfPhotosInPhotoBrower(vc)).contains(currentIndex) else { return vc }
-        
-        vc.dataSource = hostVC
         
         vc.delegate = hostVC
         

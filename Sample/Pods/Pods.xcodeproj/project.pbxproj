@@ -24,7 +24,7 @@
 		4C65D645A69F35866ABB2E606ECF6A0B /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F78CCC4E543AE1ACD02EA7C0B0927E5 /* Kingfisher.framework */; };
 		52A280AB4852FDE92DF09B5E79D5C2AA /* Indicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE39F8F9D08B99E2AC56305CB28004D2 /* Indicator.swift */; };
 		6A375593407BC7937234B2B6A0811760 /* Kingfisher-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9856B231053FF41FC9B14ACCC6F9215C /* Kingfisher-dummy.m */; };
-		6CC8B4C9826338F847B66668FDAAA541 /* MQPhotoBrowerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3413BE8DBE33F85A858FFA7DD5E4CBF5 /* MQPhotoBrowerViewController.swift */; };
+		6CC8B4C9826338F847B66668FDAAA541 /* MQPhotoBrower.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3413BE8DBE33F85A858FFA7DD5E4CBF5 /* MQPhotoBrower.swift */; };
 		6CD63E1564618B6213B98E0ABBC3127C /* ThreadHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D06CAA9AFC94CB86E9CB96D78BD0923 /* ThreadHelper.swift */; };
 		6DA770087D354CDCD3889CDAE7C4C698 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE6AD548C8531F1E89A4AC6B1C6B3A8 /* Box.swift */; };
 		70BC4EE91ED0326500A09251 /* MQPhtotBrowerWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70BC4EE81ED0326500A09251 /* MQPhtotBrowerWindow.swift */; };
@@ -91,7 +91,7 @@
 		161FD1626938094EEC6BF57530EDB6DA /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		29DEA06759B56DE01555E7422BF3D43C /* MQPhotoBrower-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MQPhotoBrower-prefix.pch"; sourceTree = "<group>"; };
 		2FDF78216A41DB691C5960FEE69EB9FD /* Pods-Sample-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Sample-resources.sh"; sourceTree = "<group>"; };
-		3413BE8DBE33F85A858FFA7DD5E4CBF5 /* MQPhotoBrowerViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MQPhotoBrowerViewController.swift; sourceTree = "<group>"; };
+		3413BE8DBE33F85A858FFA7DD5E4CBF5 /* MQPhotoBrower.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MQPhotoBrower.swift; sourceTree = "<group>"; };
 		37208DF7B0B8CB6769BD29FC8A7B01AE /* Kingfisher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Kingfisher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AE375A74D27FC41E7BB6C006DFC76A6 /* Pods-Sample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Sample.debug.xcconfig"; sourceTree = "<group>"; };
 		3C779353D21C55C88E470FE9E01220DE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
@@ -246,7 +246,7 @@
 				58942DC991D19C6A24CB466424041D8E /* MQPhotoBrowerAdapter.swift */,
 				B2375CA7EAAA3B41491C5894EB7C9565 /* MQPhotoBrowerLayout.swift */,
 				9DEAC2EBA1E0BE3D5C5351022D71B589 /* MQPhotoBrowerTransition.swift */,
-				3413BE8DBE33F85A858FFA7DD5E4CBF5 /* MQPhotoBrowerViewController.swift */,
+				3413BE8DBE33F85A858FFA7DD5E4CBF5 /* MQPhotoBrower.swift */,
 				0BBB30BD4D5DF8A58C43F569BDE66456 /* MQPresentationController.swift */,
 				D6B8F9B3274E23E43E005F8F45F27FF0 /* MQProgressView.swift */,
 				47DE9930BBC9F520D34370DE945F4266 /* MQTransitionAnimator.swift */,
@@ -544,7 +544,7 @@
 				A3FAB42ADF17FA0E37AEFD27B9311F80 /* MQPhotoBrowerLayout.swift in Sources */,
 				70BC4EE91ED0326500A09251 /* MQPhtotBrowerWindow.swift in Sources */,
 				16CC4B2D311CCC5FB403EA489FEC1E74 /* MQPhotoBrowerTransition.swift in Sources */,
-				6CC8B4C9826338F847B66668FDAAA541 /* MQPhotoBrowerViewController.swift in Sources */,
+				6CC8B4C9826338F847B66668FDAAA541 /* MQPhotoBrower.swift in Sources */,
 				34233A577EDC013EA26E06AA8AB29A6A /* MQPresentationController.swift in Sources */,
 				DE9DA26679752BCDD5599AC96C05D40D /* MQProgressView.swift in Sources */,
 				790DEE5EEC39AD85541CCD0DCAFB9251 /* MQTransitionAnimator.swift in Sources */,

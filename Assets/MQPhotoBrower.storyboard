@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Photo Brower View Controller-->
+        <!--Photo Brower-->
         <scene sceneID="NAm-NQ-zVH">
             <objects>
-                <viewController id="RSs-vQ-AnC" customClass="MQPhotoBrowerViewController" customModule="MQPhotoBrower" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="RSs-vQ-AnC" customClass="MQPhotoBrower" customModule="MQPhotoBrower" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ere-nc-tyJ"/>
                         <viewControllerLayoutGuide type="bottom" id="2dh-bX-HY4"/>

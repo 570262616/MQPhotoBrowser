@@ -9,7 +9,7 @@
 import UIKit
 import MQPhotoBrower
 
-class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, MQPhotoBrowerDataSource, MQPhotoBrowerDelegate {
+class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, MQPhotoBrowerDelegate {
 
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -68,31 +68,31 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        MQPhotoBrowerViewController.show(by: self, currentIndex: indexPath.row)
+        MQPhotoBrower.show(by: self, currentIndex: indexPath.row)
     }
     
-    func numberOfPhotosInPhotoBrower(_ photoBrower: MQPhotoBrowerViewController) -> Int {
+    func numberOfPhotosInPhotoBrower(_ photoBrower: MQPhotoBrower) -> Int {
         
         return self.images.count
     }
     
-    func photoBrower(_ photoBrower: MQPhotoBrowerViewController, photoAt index: Int) -> UIImage? {
+    func photoBrower(_ photoBrower: MQPhotoBrower, photoAt index: Int) -> UIImage? {
         
         return self.images[index]
     }
     
-    func photoBrower(_ photoBrower: MQPhotoBrowerViewController, photoURLAt index: Int) -> URL? {
+    func photoBrower(_ photoBrower: MQPhotoBrower, photoURLAt index: Int) -> URL? {
         
         return nil
 //        return URL(string: self.imageURLStrings[index])
     }
     
-    func photoBrower(_ photoBrower: MQPhotoBrowerViewController, longPressWith image: UIImage?, url: URL?) {
+    func photoBrower(_ photoBrower: MQPhotoBrower, longPressWith image: UIImage?, url: URL?) {
         
         print("Share or sava.")
     }
     
-    func photoBrower(_ photoBrower: MQPhotoBrowerViewController, currentSourceViewFor index: Int) -> UIImageView? {
+    func photoBrower(_ photoBrower: MQPhotoBrower, currentSourceViewFor index: Int) -> UIImageView? {
         
         let indexPath = IndexPath(row: index, section: 0)
         
