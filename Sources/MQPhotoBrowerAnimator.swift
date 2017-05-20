@@ -1,6 +1,6 @@
 import UIKit
 
-class MQPhotoBrowerTransition {
+class MQPhotoBrowerAnimator {
     
     let duration: TimeInterval
     

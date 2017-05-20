@@ -73,7 +73,7 @@ class MQPhotoBrowerWindowManager {
         
         let imageView = self.makeScaleImageView()
         
-        MQPhotoBrowerTransition().prepare { [weak self] _ in
+        MQPhotoBrowerAnimator().prepare { [weak self] _ in
             
             guard let strongSelf = self else { return }
             
@@ -124,7 +124,7 @@ class MQPhotoBrowerWindowManager {
         
         let imageView = self.makeScaleImageView()
         
-        MQPhotoBrowerTransition().prepare { _ in
+        MQPhotoBrowerAnimator().prepare { _ in
             
             photoBrower.view.isHidden = true
             
