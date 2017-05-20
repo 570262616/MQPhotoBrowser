@@ -2,13 +2,11 @@ import UIKit
 
 public protocol MQPhotoBrowerDelegate: class {
     
-    func photoBrower(_ photoBrower: MQPhotoBrower, longPressWith image: UIImage?, url: URL?)
-    
     func numberOfPhotosInPhotoBrower(_ photoBrower: MQPhotoBrower) -> Int
     
-    func photoBrower(_ photoBrower: MQPhotoBrower, photoAt index: Int) -> UIImage?
+    func photoBrower(_ photoBrower: MQPhotoBrower, longPressWith image: UIImage?, url: URL?)
     
-    func photoBrower(_ photoBrower: MQPhotoBrower, photoURLAt index: Int) -> URL?
+    func photoBorwer(_ photoBrower: MQPhotoBrower, placeholderImageAndURLAt index: Int) -> (UIImage?, URL?)?
     
     func photoBrower(_ photoBrower: MQPhotoBrower, currentSourceViewFor index: Int) -> UIImageView?
 }
@@ -62,11 +60,7 @@ public class MQPhotoBrower: UIViewController, MQPhotoBrowerTransitionDelegate {
         
         self.adaptor.updateCellBlock = { _, index in
             
-            let image = self.delegate?.photoBrower(self, photoAt: index)
-            
-            let url = self.delegate?.photoBrower(self, photoURLAt: index)
-            
-            return (image, url)
+            return self.delegate?.photoBorwer(self, placeholderImageAndURLAt: index)
         }
         
         self.adaptor.photoCellSingleTapAction = { [weak self] _ in
