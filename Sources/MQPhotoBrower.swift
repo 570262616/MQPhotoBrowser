@@ -71,7 +71,10 @@ public class MQPhotoBrower: UIViewController {
         
         self.adaptor.photoCellSingleTapAction = { _ in
             
-            MQPhotoBrowerWindowManager.shared.dismiss()
+            MQPhotoBrowerWindowManager.shared.dismiss(photoBrower: self) { _ in
+                
+                self.sourceView?.isHidden = false
+            }
         }
         
         self.adaptor.photoCellLongPressAction = { _, image, url in
@@ -134,6 +137,6 @@ extension MQPhotoBrower {
         
         vc.currentIndex = currentIndex
         
-        MQPhotoBrowerWindowManager.shared.show(withRootViewController: vc)
+        MQPhotoBrowerWindowManager.shared.show(photoBrower: vc, completion: { _ in })
     }
 }
