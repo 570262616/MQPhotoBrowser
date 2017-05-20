@@ -71,7 +71,7 @@ public class MQPhotoBrower: UIViewController {
         
         self.adaptor.photoCellSingleTapAction = { _ in
             
-            MQPhotoBrowerWindowManager.shared.dismiss(photoBrower: self) { _ in
+            MQPhotoBrowerTransition.shared.dismiss(photoBrower: self) { _ in
                 
                 self.sourceView?.isHidden = false
             }
@@ -88,11 +88,11 @@ public class MQPhotoBrower: UIViewController {
             
             if animated {
                 
-                UIView.animate(withDuration: 0.25) { MQPhotoBrowerWindowManager.shared.updateDimmingViewAlpha(alpha) }
+                UIView.animate(withDuration: 0.25) { MQPhotoBrowerTransition.shared.updateDimmingViewAlpha(alpha) }
                 
             } else {
                 
-                MQPhotoBrowerWindowManager.shared.updateDimmingViewAlpha(alpha)
+                MQPhotoBrowerTransition.shared.updateDimmingViewAlpha(alpha)
             }
         }
         
@@ -137,6 +137,6 @@ extension MQPhotoBrower {
         
         vc.currentIndex = currentIndex
         
-        MQPhotoBrowerWindowManager.shared.show(photoBrower: vc, completion: { _ in })
+        MQPhotoBrowerTransition.shared.show(photoBrower: vc, completion: { _ in })
     }
 }

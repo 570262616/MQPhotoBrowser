@@ -1,6 +1,6 @@
 import UIKit
 
-class MQPhotoBrowerWindowManager {
+class MQPhotoBrowerTransition {
     
     private class MQPhotoBrowerWindow: UIWindow {
         
@@ -36,9 +36,9 @@ class MQPhotoBrowerWindowManager {
     
     private init() { self.window = nil }
     
-    private var window: MQPhotoBrowerWindowManager.MQPhotoBrowerWindow?
+    private var window: MQPhotoBrowerTransition.MQPhotoBrowerWindow?
     
-    static let shared = MQPhotoBrowerWindowManager()
+    static let shared = MQPhotoBrowerTransition()
     
     private func makeFullScreenWindow() -> MQPhotoBrowerWindow {
         
@@ -46,7 +46,7 @@ class MQPhotoBrowerWindowManager {
         
         let frame = CGRect(origin: .zero, size: CGSize(width: screenSize.width, height: screenSize.height + 1.0))
         
-        return MQPhotoBrowerWindowManager.MQPhotoBrowerWindow(frame: frame)
+        return MQPhotoBrowerTransition.MQPhotoBrowerWindow(frame: frame)
     }
     
     func updateDimmingViewAlpha(_ alpha: CGFloat) {
