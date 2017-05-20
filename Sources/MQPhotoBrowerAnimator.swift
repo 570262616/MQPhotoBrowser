@@ -36,7 +36,7 @@ class MQPhotoBrowerAnimator {
         return self
     }
     
-    func perform() {
+    func perform(completion: @escaping (Bool) -> Void) {
         
         self.prepareBlock()
         
@@ -47,6 +47,8 @@ class MQPhotoBrowerAnimator {
         }, completion: { isComplete in
             
             self.endBlock(isComplete)
+            
+            completion(isComplete)
         })
     }
 }

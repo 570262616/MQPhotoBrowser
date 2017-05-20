@@ -2,7 +2,7 @@ import UIKit
 
 class MQPhotoBrowerTransition {
     
-    private class MQPhotoBrowerWindow: UIWindow {
+    fileprivate class MQPhotoBrowerWindow: UIWindow {
         
         let dimmingView = UIView()
         
@@ -34,130 +34,80 @@ class MQPhotoBrowerTransition {
         }
     }
     
-    private init() { self.window = nil }
+    fileprivate init() { self.window = nil }
     
-    private var window: MQPhotoBrowerTransition.MQPhotoBrowerWindow?
+    fileprivate var window: MQPhotoBrowerTransition.MQPhotoBrowerWindow?
     
     static let shared = MQPhotoBrowerTransition()
     
-    private func makeFullScreenWindow() -> MQPhotoBrowerWindow {
+    func create(rootVC: UIViewController) {
         
         let screenSize = UIScreen.main.bounds.size
         
         let frame = CGRect(origin: .zero, size: CGSize(width: screenSize.width, height: screenSize.height + 1.0))
         
-        return MQPhotoBrowerTransition.MQPhotoBrowerWindow(frame: frame)
+        let window = MQPhotoBrowerTransition.MQPhotoBrowerWindow(frame: frame)
+        
+        window.rootViewController = rootVC
+        
+        window.makeKeyAndVisible()
+        
+        self.window = window
+    }
+    
+    func destroy() {
+        
+        self.window = nil
+        
+        UIApplication.shared.keyWindow?.makeKeyAndVisible()
     }
     
     func updateDimmingViewAlpha(_ alpha: CGFloat) {
         
         self.window?.dimmingView.alpha = alpha
     }
+}
+
+protocol MQPhotoBrowerTransitionDelegate: class {
     
-    func makeScaleImageView() -> UIImageView {
+    func animatorForShow(dimmingView: UIView, transitionView: UIView) -> MQPhotoBrowerAnimator
+    
+    func animatorForDismiss(dimmingView: UIView, transitionView: UIView) -> MQPhotoBrowerAnimator
+}
+
+extension MQPhotoBrowerTransitionDelegate where Self: UIViewController {
+    
+    var transition: MQPhotoBrowerTransition {
         
-        let imgView = UIImageView()
-        
-        imgView.contentMode = .scaleAspectFill
-        imgView.clipsToBounds = true
-        
-        return imgView
+        return MQPhotoBrowerTransition.shared
     }
     
-    func show(photoBrower: MQPhotoBrower, completion: @escaping (Bool) -> Void) {
+    func show(completion: @escaping (Bool) -> Void) {
         
-        let window = self.makeFullScreenWindow()
-        window.rootViewController = photoBrower
-        window.makeKeyAndVisible()
-        self.window = window
+        let transition = self.transition
         
-        let imageView = self.makeScaleImageView()
+        transition.create(rootVC: self)
         
-        MQPhotoBrowerAnimator().prepare { [weak self] _ in
-            
-            guard let strongSelf = self else { return }
-            
-            photoBrower.view.isHidden = true
-            
-            strongSelf.window?.dimmingView.alpha = 0.0
-            
-            let sourceView = photoBrower.sourceView
-            
-            imageView.image = sourceView?.image
-            imageView.frame = sourceView?.convert(sourceView?.frame ?? .zero, to: window.transitionView) ?? .zero
-            
-            window.transitionView.addSubview(imageView)
-            
-        }.transition { [weak self] _ in
-            
-            guard
-                let strongSelf = self,
-                let size = imageView.image?.size, !size.width.isLessThanOrEqualTo(0.0) else {
-                    
-                    return
-            }
-            
-            let bounds = window.transitionView.bounds
-            
-            let height = bounds.width * size.height / size.width
-            
-            imageView.bounds = CGRect(x: 0, y: 0, width: bounds.width, height: height)
-            
-            imageView.center = window.transitionView.center
-            
-            strongSelf.window?.dimmingView.alpha = 1.0
-                
-        }.end { isFinish in
-            
-            photoBrower.view.isHidden = false
-            
-            imageView.removeFromSuperview()
+        guard let window = transition.window else { completion(false); return }
+        
+        self.animatorForShow(dimmingView: window.dimmingView, transitionView: window.transitionView).perform { isFinish in
             
             completion(isFinish)
-                
-        }.perform()
+        }
     }
     
-    func dismiss(photoBrower: MQPhotoBrower, completion: @escaping (Bool) -> Void) {
+    func dismiss(completion: @escaping (Bool) -> Void) {
         
-        guard let window = self.window else { return }
+        let transition = self.transition
         
-        let imageView = self.makeScaleImageView()
+        guard let window = transition.window else { completion(false); return }
         
-        MQPhotoBrowerAnimator().prepare { _ in
-            
-            photoBrower.view.isHidden = true
-            
-            let fromImageView = (photoBrower.collectionView.visibleCells.first as? MQPhotoCell)?.imageView
-            
-            imageView.image = fromImageView?.image
-            imageView.frame = fromImageView?.convert(fromImageView?.bounds ?? .zero, to: window.transitionView) ?? .zero
-            
-            window.transitionView.addSubview(imageView)
-            
-        }.transition { [weak self] _ in
-            
-            guard let strongSelf = self else { return }
-            
-            let sourceView = photoBrower.sourceView
-            
-            imageView.frame = sourceView?.convert(sourceView?.frame ?? .zero, to: window.transitionView) ?? .zero
-            
-            strongSelf.window?.dimmingView.alpha = 0.0
-            
-        }.end { [weak self] isFinish in
-            
-            imageView.removeFromSuperview()
-            
-            photoBrower.view.isHidden = true
-            
-            self?.window = nil
-            
-            UIApplication.shared.keyWindow?.makeKeyAndVisible()
+        self.animatorForDismiss(dimmingView: window.dimmingView, transitionView: window.transitionView).perform { isFinish in
             
             completion(isFinish)
             
-        }.perform()
+            transition.destroy()
+        }
     }
 }
 

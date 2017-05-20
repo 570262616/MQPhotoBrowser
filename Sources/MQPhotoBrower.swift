@@ -13,7 +13,7 @@ public protocol MQPhotoBrowerDelegate: class {
     func photoBrower(_ photoBrower: MQPhotoBrower, currentSourceViewFor index: Int) -> UIImageView?
 }
 
-public class MQPhotoBrower: UIViewController {
+public class MQPhotoBrower: UIViewController, MQPhotoBrowerTransitionDelegate {
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var pageControl: UIPageControl!
@@ -69,12 +69,12 @@ public class MQPhotoBrower: UIViewController {
             return (image, url)
         }
         
-        self.adaptor.photoCellSingleTapAction = { _ in
+        self.adaptor.photoCellSingleTapAction = { [weak self] _ in
             
-            MQPhotoBrowerTransition.shared.dismiss(photoBrower: self) { _ in
+            self?.dismiss(completion: { _ in
                 
-                self.sourceView?.isHidden = false
-            }
+                self?.sourceView?.isHidden = false
+            })
         }
         
         self.adaptor.photoCellLongPressAction = { _, image, url in
@@ -116,6 +116,95 @@ public class MQPhotoBrower: UIViewController {
 
 extension MQPhotoBrower {
     
+    private func makeScaleImageView() -> UIImageView {
+        
+        let imgView = UIImageView()
+        
+        imgView.contentMode = .scaleAspectFill
+        imgView.clipsToBounds = true
+        
+        return imgView
+    }
+    
+    func animatorForShow(dimmingView: UIView, transitionView: UIView) -> MQPhotoBrowerAnimator {
+        
+        let imgView = self.makeScaleImageView()
+        
+        return MQPhotoBrowerAnimator(duration: 0.35).prepare { [weak self] _ in
+            
+            guard let strongSelf = self else { return }
+            
+            strongSelf.view.isHidden = true
+            
+            dimmingView.alpha = 0.0
+            
+            let sourceView = strongSelf.sourceView
+            
+            imgView.image = sourceView?.image
+            
+            imgView.frame = sourceView?.convert(sourceView?.frame ?? .zero, to: transitionView) ?? .zero
+            
+            transitionView.addSubview(imgView)
+            
+        }.transition { _ in
+            
+            guard let size = imgView.image?.size, !size.width.isLessThanOrEqualTo(0.0) else { return }
+            
+            let bounds = transitionView.bounds
+            
+            let height = bounds.width * size.height / size.width
+            
+            imgView.bounds = CGRect(x: 0, y: 0, width: bounds.width, height: height)
+            
+            imgView.center = transitionView.center
+            
+            dimmingView.alpha = 1.0
+                
+        }.end({ [weak self] isFinish in
+            
+            self?.view.isHidden = false
+            
+            imgView.removeFromSuperview()
+        })
+    }
+    
+    func animatorForDismiss(dimmingView: UIView, transitionView: UIView) -> MQPhotoBrowerAnimator {
+        
+        let imgView = self.makeScaleImageView()
+        
+        return MQPhotoBrowerAnimator(duration: 0.35).prepare { [weak self] _ in
+            
+            guard let strongSelf = self else { return }
+            
+            strongSelf.view.isHidden = true
+            
+            let fromImageView = (strongSelf.collectionView.visibleCells.first as? MQPhotoCell)?.imageView
+            
+            imgView.image = fromImageView?.image
+            
+            imgView.frame = fromImageView?.convert(fromImageView?.bounds ?? .zero, to: transitionView) ?? .zero
+            
+            transitionView.addSubview(imgView)
+            
+        }.transition { [weak self] _ in
+            
+            let sourceView = self?.sourceView
+            
+            imgView.frame = sourceView?.convert(sourceView?.frame ?? .zero, to: transitionView) ?? .zero
+            
+            dimmingView.alpha = 0.0
+                
+        }.end({ [weak self] _ in
+            
+            imgView.removeFromSuperview()
+            
+            self?.view.isHidden = true
+        })
+    }
+}
+
+extension MQPhotoBrower {
+    
     static func makePhotoBrower() -> MQPhotoBrower {
         
         guard
@@ -137,6 +226,6 @@ extension MQPhotoBrower {
         
         vc.currentIndex = currentIndex
         
-        MQPhotoBrowerTransition.shared.show(photoBrower: vc, completion: { _ in })
+        vc.show { _ in }
     }
 }
