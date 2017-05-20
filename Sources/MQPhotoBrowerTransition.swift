@@ -2,7 +2,7 @@ import UIKit
 
 class MQPhotoBrowerTransition {
     
-    fileprivate class MQPhotoBrowerWindow: UIWindow {
+    private class MQPhotoBrowerWindow: UIWindow {
         
         let dimmingView = UIView()
         
@@ -34,9 +34,9 @@ class MQPhotoBrowerTransition {
         }
     }
     
-    fileprivate init() { self.window = nil }
+    private init() { self.window = nil }
     
-    fileprivate var window: MQPhotoBrowerTransition.MQPhotoBrowerWindow?
+    private var window: MQPhotoBrowerTransition.MQPhotoBrowerWindow?
     
     static let shared = MQPhotoBrowerTransition()
     
@@ -62,9 +62,14 @@ class MQPhotoBrowerTransition {
         UIApplication.shared.keyWindow?.makeKeyAndVisible()
     }
     
-    func updateDimmingViewAlpha(_ alpha: CGFloat) {
+    var dimmingView: UIView? {
         
-        self.window?.dimmingView.alpha = alpha
+        return self.window?.dimmingView
+    }
+    
+    var transitionView: UIView? {
+        
+        return self.window?.transitionView
     }
 }
 
@@ -88,9 +93,15 @@ extension MQPhotoBrowerTransitionDelegate where Self: UIViewController {
         
         transition.create(rootVC: self)
         
-        guard let window = transition.window else { completion(false); return }
+        guard
+            let dimmingView = transition.dimmingView,
+            let transitionView = transition.transitionView else {
+                
+                completion(false)
+                return
+        }
         
-        self.animatorForShow(dimmingView: window.dimmingView, transitionView: window.transitionView).perform { isFinish in
+        self.animatorForShow(dimmingView: dimmingView, transitionView: transitionView).perform { isFinish in
             
             completion(isFinish)
         }
@@ -100,9 +111,15 @@ extension MQPhotoBrowerTransitionDelegate where Self: UIViewController {
         
         let transition = self.transition
         
-        guard let window = transition.window else { completion(false); return }
+        guard
+            let dimmingView = transition.dimmingView,
+            let transitionView = transition.transitionView else {
+                
+                completion(false)
+                return
+        }
         
-        self.animatorForDismiss(dimmingView: window.dimmingView, transitionView: window.transitionView).perform { isFinish in
+        self.animatorForDismiss(dimmingView: dimmingView, transitionView: transitionView).perform { isFinish in
             
             completion(isFinish)
             

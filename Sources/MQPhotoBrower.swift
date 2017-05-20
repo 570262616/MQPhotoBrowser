@@ -82,17 +82,19 @@ public class MQPhotoBrower: UIViewController, MQPhotoBrowerTransitionDelegate {
             self.delegate?.photoBrower(self, longPressWith: image, url: url)
         }
         
+        let transition = self.transition
+        
         self.adaptor.photoCellUpdateScale = { _, scale, animated in
             
             let alpha = scale * scale
             
             if animated {
                 
-                UIView.animate(withDuration: 0.25) { MQPhotoBrowerTransition.shared.updateDimmingViewAlpha(alpha) }
+                UIView.animate(withDuration: 0.25) { transition.dimmingView?.alpha = alpha }
                 
             } else {
                 
-                MQPhotoBrowerTransition.shared.updateDimmingViewAlpha(alpha)
+                transition.dimmingView?.alpha = alpha
             }
         }
         
@@ -110,8 +112,6 @@ public class MQPhotoBrower: UIViewController, MQPhotoBrowerTransitionDelegate {
         self.pageControl.numberOfPages = self.delegate?.numberOfPhotosInPhotoBrower(self) ?? 0
         self.pageControl.currentPage = self.currentIndex
     }
-    
-    public override var preferredStatusBarStyle: UIStatusBarStyle { return self.presentingViewController?.preferredStatusBarStyle ?? .default }
 }
 
 extension MQPhotoBrower {
