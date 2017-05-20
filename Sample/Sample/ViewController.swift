@@ -124,5 +124,13 @@ class SampleCell: UICollectionViewCell {
 
 extension UINavigationController {
     
-    open override var preferredStatusBarStyle: UIStatusBarStyle { return self.viewControllers.last?.preferredStatusBarStyle ?? .lightContent }
+    open override var childViewControllerForStatusBarStyle: UIViewController? {
+        
+        return self.topViewController
+    }
+    
+    open override var childViewControllerForStatusBarHidden: UIViewController? {
+        
+        return self.topViewController
+    }
 }
