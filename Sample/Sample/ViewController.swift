@@ -118,6 +118,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             self.collectionView.scrollToItem(at: indexPath, at: .centeredVertically, animated: false)
         }
         
+        collectionView.layoutIfNeeded()
+        
         let cell = self.collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? SampleCell
         
         return cell?.imageView
