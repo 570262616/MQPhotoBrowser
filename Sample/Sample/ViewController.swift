@@ -94,13 +94,14 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         return self.images.count
     }
     
-    func photoBorwer(_ photoBrower: MQPhotoBrower, placeholderImageAndURLAt index: Int) -> (UIImage?, URL?)? {
+    func photoBrower(_ photoBrower: MQPhotoBrower, placeholderImageAt index: Int) -> UIImage? {
         
-        let img = self.images[index]
+        return self.images[index]
+    }
+    
+    func photoBrower(_ photoBrower: MQPhotoBrower, photoURLAt index: Int) -> URL? {
         
-        let url = URL(string: self.imageURLStrings[index])
-        
-        return (img, url)
+        return URL(string: self.imageURLStrings[index])
     }
     
     func photoBrower(_ photoBrower: MQPhotoBrower, longPressWith image: UIImage?, url: URL?) {

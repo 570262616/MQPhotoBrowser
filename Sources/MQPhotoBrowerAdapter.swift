@@ -8,7 +8,7 @@ class MQPhotoBrowerAdapter: NSObject, UICollectionViewDelegate, UICollectionView
     
     var currentIndexBlock:((MQPhotoBrowerAdapter, Int) -> Void)?
     
-    var updateCellBlock: ((MQPhotoBrowerAdapter, Int) -> (UIImage?, URL?)?)?
+    var updateCellBlock: ((MQPhotoBrowerAdapter, Int) -> (UIImage?, URL?))?
     
     var photoCellSingleTapAction: ((MQPhotoCell) -> Void)?
     

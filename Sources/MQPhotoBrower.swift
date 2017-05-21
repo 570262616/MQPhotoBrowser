@@ -5,8 +5,10 @@ public protocol MQPhotoBrowerDelegate: class {
     func numberOfPhotosInPhotoBrower(_ photoBrower: MQPhotoBrower) -> Int
     
     func photoBrower(_ photoBrower: MQPhotoBrower, longPressWith image: UIImage?, url: URL?)
+        
+    func photoBrower(_ photoBrower: MQPhotoBrower, placeholderImageAt index: Int) -> UIImage?
     
-    func photoBorwer(_ photoBrower: MQPhotoBrower, placeholderImageAndURLAt index: Int) -> (UIImage?, URL?)?
+    func photoBrower(_ photoBrower: MQPhotoBrower, photoURLAt index: Int) -> URL?
     
     func photoBrower(_ photoBrower: MQPhotoBrower, currentSourceViewFor index: Int) -> UIImageView?
 }
@@ -60,7 +62,10 @@ public class MQPhotoBrower: UIViewController, MQPhotoBrowerTransitionDelegate {
         
         self.adaptor.updateCellBlock = { _, index in
             
-            return self.delegate?.photoBorwer(self, placeholderImageAndURLAt: index)
+            let url = self.delegate?.photoBrower(self, photoURLAt: index)
+            let img = self.delegate?.photoBrower(self, placeholderImageAt: index)
+            
+            return (img, url)
         }
         
         self.adaptor.photoCellSingleTapAction = { [weak self] _ in
