@@ -58,21 +58,24 @@ class MQPhotoCell: UICollectionViewCell, UIScrollViewDelegate {
         
         self.progressView.isHidden = false
         
-        self.imageView.kf.setImage(with: info?.1, placeholder: info?.0, progressBlock: { [weak self] received, total in
+        self.imageView.image = info?.0
+        
+        self.updateLayout()
+        
+        self.imageView.kf.setImage(
+            with: info?.1,
+            options: [.keepCurrentImageWhileLoading, .callbackDispatchQueue(DispatchQueue.main)],
+            progressBlock: { [weak self] received, total in
             
-            DispatchQueue.main.async {
-                
                 self?.progressView.progress = CGFloat(received) / CGFloat(total)
-            }
             
-            }, completionHandler: { [weak self] _ in
+            }, completionHandler: { [weak self] image, _, _, _ in
                 
-                DispatchQueue.main.async {
-                    
-                    self?.progressView.isHidden = true
-                    
-                    self?.updateLayout()
-                }
+                self?.imageView.image = image ?? info?.0
+                
+                self?.progressView.isHidden = true
+                
+                self?.updateLayout()
         })
     }
     
