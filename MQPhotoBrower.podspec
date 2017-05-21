@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name = 'MQPhotoBrower'
-  s.version = '0.0.1'
+  s.version = '0.0.2'
   s.license = { :type => 'MIT', :text => <<-LICENSE
                     MIT License
 
