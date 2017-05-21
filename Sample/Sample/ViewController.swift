@@ -79,7 +79,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         let inset = layout.sectionInset
         
-        let width = floor((collectionView.bounds.width - inset.left - inset.right - layout.minimumLineSpacing * 2.0) / 3.0)
+        let width = floor(collectionView.bounds.width - inset.left - inset.right)
         
         return CGSize(width: width, height: width)
     }
