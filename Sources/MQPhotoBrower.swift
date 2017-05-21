@@ -204,7 +204,7 @@ extension MQPhotoBrower {
 
 extension MQPhotoBrower {
     
-    static func makePhotoBrower() -> MQPhotoBrower {
+    public static func makePhotoBrower() -> MQPhotoBrower {
         
         guard
             let photoBrowerVC = UIStoryboard(name: "MQPhotoBrower", bundle: MQBundle.main).instantiateInitialViewController() as? MQPhotoBrower else {
