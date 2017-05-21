@@ -189,7 +189,14 @@ extension MQPhotoBrower {
             
             let sourceView = self?.sourceView
             
-            imgView.frame = sourceView?.convert(sourceView?.frame ?? .zero, to: transitionView) ?? .zero
+            if let frame = sourceView?.convert(sourceView?.frame ?? .zero, to: transitionView) {
+                
+                imgView.frame = frame
+                
+            } else {
+                
+                imgView.alpha = 0.0
+            }
             
             dimmingView.alpha = 0.0
                 
