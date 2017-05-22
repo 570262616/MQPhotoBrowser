@@ -2,7 +2,7 @@ import UIKit
 
 class MQPhotoBrowserTransition {
     
-    private class MQPhotoBrowerWindow: UIWindow {
+    private class MQPhotoBrowserWindow: UIWindow {
         
         let dimmingView = UIView()
         
@@ -36,7 +36,7 @@ class MQPhotoBrowserTransition {
     
     private init() { self.window = nil }
     
-    private var window: MQPhotoBrowserTransition.MQPhotoBrowerWindow?
+    private var window: MQPhotoBrowserTransition.MQPhotoBrowserWindow?
     
     static let shared = MQPhotoBrowserTransition()
     
@@ -46,7 +46,7 @@ class MQPhotoBrowserTransition {
         
         let frame = CGRect(origin: .zero, size: CGSize(width: screenSize.width, height: screenSize.height + 1.0))
         
-        let window = MQPhotoBrowserTransition.MQPhotoBrowerWindow(frame: frame)
+        let window = MQPhotoBrowserTransition.MQPhotoBrowserWindow(frame: frame)
         
         window.rootViewController = rootVC
         
@@ -73,14 +73,14 @@ class MQPhotoBrowserTransition {
     }
 }
 
-protocol MQPhotoBrowerTransitionDelegate: class {
+protocol MQPhotoBrowserTransitionDelegate: class {
     
     func animatorForShow(dimmingView: UIView, transitionView: UIView) -> MQPhotoBrowserAnimator
     
     func animatorForDismiss(dimmingView: UIView, transitionView: UIView) -> MQPhotoBrowserAnimator
 }
 
-extension MQPhotoBrowerTransitionDelegate where Self: UIViewController {
+extension MQPhotoBrowserTransitionDelegate where Self: UIViewController {
     
     var transition: MQPhotoBrowserTransition {
         

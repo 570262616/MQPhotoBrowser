@@ -13,7 +13,7 @@ public protocol MQPhotoBrowserDelegate: class {
     func photoBrowser(_ photoBrowser: MQPhotoBrowser, currentSourceViewFor index: Int) -> UIImageView?
 }
 
-public class MQPhotoBrowser: UIViewController, MQPhotoBrowerTransitionDelegate {
+public class MQPhotoBrowser: UIViewController, MQPhotoBrowserTransitionDelegate {
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var pageControl: UIPageControl!
@@ -211,20 +211,20 @@ extension MQPhotoBrowser {
 
 extension MQPhotoBrowser {
     
-    private static func makePhotoBrower() -> MQPhotoBrowser {
+    private static func makePhotoBrowser() -> MQPhotoBrowser {
         
         guard
-            let photoBrowerVC = UIStoryboard(name: "MQPhotoBrowser", bundle: MQBundle.main).instantiateInitialViewController() as? MQPhotoBrowser else {
+            let photoBrowserVC = UIStoryboard(name: "MQPhotoBrowser", bundle: MQBundle.main).instantiateInitialViewController() as? MQPhotoBrowser else {
                 
-                fatalError("Can't load photo brower view controller from story board.")
+                fatalError("Can't load photo browser view controller from story board.")
         }
         
-        return photoBrowerVC
+        return photoBrowserVC
     }
     
     public static func show(delegate: MQPhotoBrowserDelegate?, currentIndex: Int) {
         
-        let vc = self.makePhotoBrower()
+        let vc = self.makePhotoBrowser()
         
         guard let count = delegate?.numberOfPhotosInPhotoBrowser(vc), (0..<count).contains(currentIndex) else { return }
         
