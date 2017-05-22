@@ -4,16 +4,16 @@ PODS:
     - Kingfisher
 
 DEPENDENCIES:
-  - MQPhotoBrowser (from `../../MQPhotoBrower`)
+  - MQPhotoBrowser (from `../../MQPhotoBrowser`)
 
 EXTERNAL SOURCES:
   MQPhotoBrowser:
-    :path: ../../MQPhotoBrower
+    :path: ../../MQPhotoBrowser
 
 SPEC CHECKSUMS:
   Kingfisher: 6729a0baaa458245bfb8cd5a1296c71c10d6eb6c
-  MQPhotoBrowser: fef4c23ebe5e13fc41b374af9352695f1d6d1cec
+  MQPhotoBrowser: 9c31c93ce83fcde50470df2562f1ff59e82cc1a4
 
-PODFILE CHECKSUM: 330a457d865086066cb54e8cbf2227f33b760c53
+PODFILE CHECKSUM: 6ce9ea9eb3e89a2cabbddb4e78f0b9b9c990da4f
 
 COCOAPODS: 1.2.1

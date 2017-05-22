@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name = 'MQPhotoBrowser'
-  s.version = '0.1.0'
+  s.version = '0.2.0'
   s.license = { :type => 'MIT', :text => <<-LICENSE
                     MIT License
 
@@ -28,9 +28,9 @@ Pod::Spec.new do |s|
                  LICENSE
   }
   s.summary = 'Elegant photo browser, Write in Swift.'
-  s.homepage = 'https://github.com/Arror/MQPhotoBrower'
+  s.homepage = 'https://github.com/Arror/MQPhotoBrowser'
   s.authors = { 'Arror' => 'hallo.maqiang@gmail.com' }
-  s.source = { git: 'https://github.com/Arror/MQPhotoBrower.git', tag: s.version }
+  s.source = { git: 'https://github.com/Arror/MQPhotoBrowser.git', tag: s.version }
 
   s.platform = :ios, '8.0'
   s.source_files = 'Sources/*.swift'
