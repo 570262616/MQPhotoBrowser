@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 
-  s.name = 'MQPhotoBrower'
+  s.name = 'MQPhotoBrowser'
   s.version = '0.1.0'
   s.license = { :type => 'MIT', :text => <<-LICENSE
                     MIT License
@@ -35,7 +35,7 @@ Pod::Spec.new do |s|
   s.platform = :ios, '8.0'
   s.source_files = 'Sources/*.swift'
   s.resource_bundles = {
-    'MQPhotoBrower' => ['Assets/*.storyboard']
+    'MQPhotoBrowser' => ['Assets/*.storyboard']
   }
 
   s.dependency "Kingfisher"

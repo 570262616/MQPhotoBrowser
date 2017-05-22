@@ -7,10 +7,10 @@
 //
 
 import UIKit
-import MQPhotoBrower
+import MQPhotoBrowser
 import Kingfisher
 
-class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, MQPhotoBrowerDelegate {
+class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, MQPhotoBrowserDelegate {
 
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -86,30 +86,30 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        MQPhotoBrower.show(delegate: self, currentIndex: indexPath.row)
+        MQPhotoBrowser.show(delegate: self, currentIndex: indexPath.row)
     }
     
-    func numberOfPhotosInPhotoBrower(_ photoBrower: MQPhotoBrower) -> Int {
+    func numberOfPhotosInPhotoBrowser(_ photoBrowser: MQPhotoBrowser) -> Int {
         
         return self.images.count
     }
     
-    func photoBrower(_ photoBrower: MQPhotoBrower, placeholderImageAt index: Int) -> UIImage? {
+    func photoBrowser(_ photoBrowser: MQPhotoBrowser, placeholderImageAt index: Int) -> UIImage? {
         
         return self.images[index]
     }
     
-    func photoBrower(_ photoBrower: MQPhotoBrower, photoURLAt index: Int) -> URL? {
+    func photoBrowser(_ photoBrowser: MQPhotoBrowser, photoURLAt index: Int) -> URL? {
         
         return URL(string: self.imageURLStrings[index])
     }
     
-    func photoBrower(_ photoBrower: MQPhotoBrower, longPressWith image: UIImage?, url: URL?) {
+    func photoBrowser(_ photoBrowser: MQPhotoBrowser, longPressWith image: UIImage?, url: URL?) {
         
         print("Share or sava.")
     }
     
-    func photoBrower(_ photoBrower: MQPhotoBrower, currentSourceViewFor index: Int) -> UIImageView? {
+    func photoBrowser(_ photoBrowser: MQPhotoBrowser, currentSourceViewFor index: Int) -> UIImageView? {
         
         let indexPath = IndexPath(row: index, section: 0)
         

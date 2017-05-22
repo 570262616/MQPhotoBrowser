@@ -1,6 +1,6 @@
 import UIKit
 
-class MQPhotoBrowerLayout: UICollectionViewFlowLayout {
+class MQPhotoBrowserLayout: UICollectionViewFlowLayout {
     
     static var layoutMinLineSpacing: CGFloat = 30.0
     
@@ -22,7 +22,7 @@ class MQPhotoBrowerLayout: UICollectionViewFlowLayout {
         
         self.scrollDirection = .horizontal
         
-        self.minimumLineSpacing = MQPhotoBrowerLayout.layoutMinLineSpacing
+        self.minimumLineSpacing = MQPhotoBrowserLayout.layoutMinLineSpacing
         
         self.minimumInteritemSpacing = 0.0
     }

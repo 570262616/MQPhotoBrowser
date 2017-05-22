@@ -1,30 +1,30 @@
 import UIKit
 
-public protocol MQPhotoBrowerDelegate: class {
+public protocol MQPhotoBrowserDelegate: class {
     
-    func numberOfPhotosInPhotoBrower(_ photoBrower: MQPhotoBrower) -> Int
+    func numberOfPhotosInPhotoBrowser(_ photoBrowser: MQPhotoBrowser) -> Int
     
-    func photoBrower(_ photoBrower: MQPhotoBrower, longPressWith image: UIImage?, url: URL?)
+    func photoBrowser(_ photoBrowser: MQPhotoBrowser, longPressWith image: UIImage?, url: URL?)
         
-    func photoBrower(_ photoBrower: MQPhotoBrower, placeholderImageAt index: Int) -> UIImage?
+    func photoBrowser(_ photoBrowser: MQPhotoBrowser, placeholderImageAt index: Int) -> UIImage?
     
-    func photoBrower(_ photoBrower: MQPhotoBrower, photoURLAt index: Int) -> URL?
+    func photoBrowser(_ photoBrowser: MQPhotoBrowser, photoURLAt index: Int) -> URL?
     
-    func photoBrower(_ photoBrower: MQPhotoBrower, currentSourceViewFor index: Int) -> UIImageView?
+    func photoBrowser(_ photoBrowser: MQPhotoBrowser, currentSourceViewFor index: Int) -> UIImageView?
 }
 
-public class MQPhotoBrower: UIViewController, MQPhotoBrowerTransitionDelegate {
+public class MQPhotoBrowser: UIViewController, MQPhotoBrowerTransitionDelegate {
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var pageControl: UIPageControl!
     
-    private let adaptor = MQPhotoBrowerAdapter()
+    private let adaptor = MQPhotoBrowserAdapter()
     
-    public weak var delegate: MQPhotoBrowerDelegate?
+    public weak var delegate: MQPhotoBrowserDelegate?
     
     public var currentIndex: Int = 0 {
         didSet {
-            self.sourceView = self.delegate?.photoBrower(self, currentSourceViewFor: self.currentIndex)
+            self.sourceView = self.delegate?.photoBrowser(self, currentSourceViewFor: self.currentIndex)
             if self.pageControl != nil {
                 self.pageControl.currentPage = self.currentIndex
             }
@@ -50,7 +50,7 @@ public class MQPhotoBrower: UIViewController, MQPhotoBrowerTransitionDelegate {
         
         self.adaptor.numberOfPhotoBlock = { _ in
             
-            return self.delegate?.numberOfPhotosInPhotoBrower(self) ?? 0
+            return self.delegate?.numberOfPhotosInPhotoBrowser(self) ?? 0
         }
         
         self.adaptor.currentIndexBlock = { _, index in
@@ -62,8 +62,8 @@ public class MQPhotoBrower: UIViewController, MQPhotoBrowerTransitionDelegate {
         
         self.adaptor.updateCellBlock = { _, index in
             
-            let url = self.delegate?.photoBrower(self, photoURLAt: index)
-            let img = self.delegate?.photoBrower(self, placeholderImageAt: index)
+            let url = self.delegate?.photoBrowser(self, photoURLAt: index)
+            let img = self.delegate?.photoBrowser(self, placeholderImageAt: index)
             
             return (img, url)
         }
@@ -78,7 +78,7 @@ public class MQPhotoBrower: UIViewController, MQPhotoBrowerTransitionDelegate {
         
         self.adaptor.photoCellLongPressAction = { _, image, url in
             
-            self.delegate?.photoBrower(self, longPressWith: image, url: url)
+            self.delegate?.photoBrowser(self, longPressWith: image, url: url)
         }
         
         let transition = self.transition
@@ -108,12 +108,12 @@ public class MQPhotoBrower: UIViewController, MQPhotoBrowerTransitionDelegate {
         super.viewWillAppear(animated)
         self.collectionView.reloadData()
         
-        self.pageControl.numberOfPages = self.delegate?.numberOfPhotosInPhotoBrower(self) ?? 0
+        self.pageControl.numberOfPages = self.delegate?.numberOfPhotosInPhotoBrowser(self) ?? 0
         self.pageControl.currentPage = self.currentIndex
     }
 }
 
-extension MQPhotoBrower {
+extension MQPhotoBrowser {
     
     private func makeScaleImageView() -> UIImageView {
         
@@ -125,11 +125,11 @@ extension MQPhotoBrower {
         return imgView
     }
     
-    func animatorForShow(dimmingView: UIView, transitionView: UIView) -> MQPhotoBrowerAnimator {
+    func animatorForShow(dimmingView: UIView, transitionView: UIView) -> MQPhotoBrowserAnimator {
         
         let imgView = self.makeScaleImageView()
         
-        return MQPhotoBrowerAnimator(duration: 0.35).prepare { [weak self] _ in
+        return MQPhotoBrowserAnimator(duration: 0.35).prepare { [weak self] _ in
             
             guard let strongSelf = self else { return }
             
@@ -167,11 +167,11 @@ extension MQPhotoBrower {
         })
     }
     
-    func animatorForDismiss(dimmingView: UIView, transitionView: UIView) -> MQPhotoBrowerAnimator {
+    func animatorForDismiss(dimmingView: UIView, transitionView: UIView) -> MQPhotoBrowserAnimator {
         
         let imgView = self.makeScaleImageView()
         
-        return MQPhotoBrowerAnimator(duration: 0.35).prepare { [weak self] _ in
+        return MQPhotoBrowserAnimator(duration: 0.35).prepare { [weak self] _ in
             
             guard let strongSelf = self else { return }
             
@@ -209,24 +209,24 @@ extension MQPhotoBrower {
     }
 }
 
-extension MQPhotoBrower {
+extension MQPhotoBrowser {
     
-    private static func makePhotoBrower() -> MQPhotoBrower {
+    private static func makePhotoBrower() -> MQPhotoBrowser {
         
         guard
-            let photoBrowerVC = UIStoryboard(name: "MQPhotoBrower", bundle: MQBundle.main).instantiateInitialViewController() as? MQPhotoBrower else {
+            let photoBrowerVC = UIStoryboard(name: "MQPhotoBrowser", bundle: MQBundle.main).instantiateInitialViewController() as? MQPhotoBrowser else {
                 
-                fatalError("Can't load MQPhotoBrowerViewController from story board.")
+                fatalError("Can't load photo brower view controller from story board.")
         }
         
         return photoBrowerVC
     }
     
-    public static func show(delegate: MQPhotoBrowerDelegate?, currentIndex: Int) {
+    public static func show(delegate: MQPhotoBrowserDelegate?, currentIndex: Int) {
         
         let vc = self.makePhotoBrower()
         
-        guard let count = delegate?.numberOfPhotosInPhotoBrower(vc), (0..<count).contains(currentIndex) else { return }
+        guard let count = delegate?.numberOfPhotosInPhotoBrowser(vc), (0..<count).contains(currentIndex) else { return }
         
         vc.delegate = delegate
         

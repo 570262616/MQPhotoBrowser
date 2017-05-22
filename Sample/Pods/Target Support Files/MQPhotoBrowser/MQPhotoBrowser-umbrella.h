@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double MQPhotoBrowerVersionNumber;
-FOUNDATION_EXPORT const unsigned char MQPhotoBrowerVersionString[];
+FOUNDATION_EXPORT double MQPhotoBrowserVersionNumber;
+FOUNDATION_EXPORT const unsigned char MQPhotoBrowserVersionString[];
 

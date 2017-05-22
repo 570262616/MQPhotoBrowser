@@ -9,12 +9,12 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>MQPhotoBrower-MQPhotoBrower.xcscheme</key>
+		<key>MQPhotoBrowser-MQPhotoBrowser.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>MQPhotoBrower.xcscheme</key>
+		<key>MQPhotoBrowser.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -27,27 +27,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>00622BA299A03F4ED1143B544CEBB431</key>
+		<key>A10A65754BC81B54B9563570C2E4A3F4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>07E79569B1E1DF86796058DCEB0950F0</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>3EC66880BCEA70D8BB8BF02D7DABA6EC</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>62007654DDD925FC9DECDA506E9DAE5F</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>96A9774BAC2C69238AE1A42EC58D5B17</key>
+		<key>B3950753D5EF613CE228844AB4CDAFA2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -57,7 +42,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>ED396CB7AFE66499D000C68688BAFEC3</key>
+		<key>D84C7287ABF0F34B299A4D93D9FB348E</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -8,10 +8,10 @@ class MQBundle: Bundle {
 fileprivate let bundle: Bundle = {
     
     guard
-        let bundleURL = Bundle(for: MQBundle.self).url(forResource: "MQPhotoBrower", withExtension: "bundle"),
+        let bundleURL = Bundle(for: MQBundle.self).url(forResource: "MQPhotoBrowser", withExtension: "bundle"),
         let bundle = Bundle(url: bundleURL) else {
             
-            fatalError("Load MQPhotoBrower's bundle failed.")
+            fatalError("Load MQPhotoBrowser's bundle failed.")
     }
     
     return bundle

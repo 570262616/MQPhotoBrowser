@@ -2,5 +2,5 @@ platform :ios, '8.0'
 
 target 'Sample' do
   use_frameworks!
-  pod 'MQPhotoBrower', :path => '../../MQPhotoBrower' 
+  pod 'MQPhotoBrowser', :path => '../../MQPhotoBrower' 
 end

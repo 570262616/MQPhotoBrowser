@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Photo Brower-->
+        <!--Photo Browser-->
         <scene sceneID="NAm-NQ-zVH">
             <objects>
-                <viewController id="RSs-vQ-AnC" customClass="MQPhotoBrower" customModule="MQPhotoBrower" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="RSs-vQ-AnC" customClass="MQPhotoBrowser" customModule="MQPhotoBrowser" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ere-nc-tyJ"/>
                         <viewControllerLayoutGuide type="bottom" id="2dh-bX-HY4"/>
@@ -24,9 +24,9 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" indicatorStyle="black" dataMode="prototypes" prefetchingEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KY2-D2-Abm">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <collectionViewLayout key="collectionViewLayout" id="3vZ-QQ-cY0" customClass="MQPhotoBrowerLayout" customModule="MQPhotoBrower" customModuleProvider="target"/>
+                                <collectionViewLayout key="collectionViewLayout" id="3vZ-QQ-cY0" customClass="MQPhotoBrowserLayout" customModule="MQPhotoBrowser" customModuleProvider="target"/>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="photoCell" id="Y1P-CJ-ZpI" customClass="MQPhotoCell" customModule="MQPhotoBrower" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="photoCell" id="Y1P-CJ-ZpI" customClass="MQPhotoCell" customModule="MQPhotoBrowser" customModuleProvider="target">
                                         <rect key="frame" x="12.5" y="0.0" width="350" height="350"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">

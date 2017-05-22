@@ -1,14 +1,14 @@
 import UIKit
 
-class MQPhotoBrowerAdapter: NSObject, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class MQPhotoBrowserAdapter: NSObject, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     override init() { super.init() }
     
-    var numberOfPhotoBlock: ((MQPhotoBrowerAdapter) -> Int)?
+    var numberOfPhotoBlock: ((MQPhotoBrowserAdapter) -> Int)?
     
-    var currentIndexBlock:((MQPhotoBrowerAdapter, Int) -> Void)?
+    var currentIndexBlock:((MQPhotoBrowserAdapter, Int) -> Void)?
     
-    var updateCellBlock: ((MQPhotoBrowerAdapter, Int) -> (UIImage?, URL?))?
+    var updateCellBlock: ((MQPhotoBrowserAdapter, Int) -> (UIImage?, URL?))?
     
     var photoCellSingleTapAction: ((MQPhotoCell) -> Void)?
     
@@ -43,7 +43,7 @@ class MQPhotoBrowerAdapter: NSObject, UICollectionViewDelegate, UICollectionView
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
-        let currentIndex = Int((scrollView.contentOffset.x + scrollView.bounds.width / 2.0) / (scrollView.bounds.width + MQPhotoBrowerLayout.layoutMinLineSpacing))
+        let currentIndex = Int((scrollView.contentOffset.x + scrollView.bounds.width / 2.0) / (scrollView.bounds.width + MQPhotoBrowserLayout.layoutMinLineSpacing))
         
         self.currentIndexBlock?(self, currentIndex)
     }
