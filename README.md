@@ -1,1 +1,4 @@
-# MQPhotoBrower
+# MQPhotoBrowser
+
+# Installation
+    pod 'MQPhotoBrowser'
