@@ -35,7 +35,7 @@ Pod::Spec.new do |s|
   s.platform = :ios, '8.0'
   s.source_files = 'Sources/*.swift'
   s.resource_bundles = {
-    'MQPhotoBrowser' => ['Assets/*.storyboard']
+    'MQPhotoBrowser' => ['MQPhotoBrowser.bundle/*.storyboard']
   }
 
   s.dependency "Kingfisher"

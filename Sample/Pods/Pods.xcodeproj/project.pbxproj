@@ -45,7 +45,7 @@
 		DC6080C64C269628C3F5107BE87055E2 /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DE4AC69094EC3015FFF1BF0AD4AFE7 /* ImageDownloader.swift */; };
 		EA816A580C3858934ED6FE92040C26DD /* RequestModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799CA99214B1F57CE947563E43D6E995 /* RequestModifier.swift */; };
 		EE89512E8D36E67CDC525DB9D5BBF5A7 /* UIButton+Kingfisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4022814E31F041CA8E6FFA328C8639 /* UIButton+Kingfisher.swift */; };
-		F098D2E2F44DBA3959C15593CE87B36C /* MQPhotoBrowser.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2D9DC646EAACD59A1AD84D2C3CEC574 /* MQPhotoBrowser.storyboard */; };
+		F098D2E2F44DBA3959C15593CE87B36C /* MQPhotoBrowser.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA6A4D9F478A0E5B024DCA38BF37C9C0 /* MQPhotoBrowser.storyboard */; };
 		F3B1C4B1905127B2B98649E12B2D9205 /* MQProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DA96468CD8C5857BAA689F332931A2 /* MQProgressView.swift */; };
 		F5C8C3F45F42FBDE5D87000C71178D20 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88C2DC201E57C6FC489FB78275D9E14D /* CFNetwork.framework */; };
 		F8E957950566622A3E4B61AACE8F0B4A /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C72AFC42CED429C7A71F7A7704D20C /* ImageCache.swift */; };
@@ -132,9 +132,9 @@
 		B0CE60CF150A34D6C7F9C67142073C9E /* MQPhotoBrowserAnimator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MQPhotoBrowserAnimator.swift; sourceTree = "<group>"; };
 		B3121B093167056C9D9664C8D4E4CBC0 /* MQPhotoBrowser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MQPhotoBrowser.swift; sourceTree = "<group>"; };
 		B5FD04ADE8ADCB49430CE23105D328C6 /* Kingfisher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Kingfisher.framework; path = Kingfisher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA6A4D9F478A0E5B024DCA38BF37C9C0 /* MQPhotoBrowser.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.storyboard; path = MQPhotoBrowser.storyboard; sourceTree = "<group>"; };
 		BC79E2E5D62D71F36463838727DAA58D /* Kingfisher.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Kingfisher.xcconfig; sourceTree = "<group>"; };
 		C17508B36ADDD1E2AC4946C7C827FDE4 /* MQPhotoBrowserTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MQPhotoBrowserTransition.swift; sourceTree = "<group>"; };
-		C2D9DC646EAACD59A1AD84D2C3CEC574 /* MQPhotoBrowser.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.storyboard; path = MQPhotoBrowser.storyboard; sourceTree = "<group>"; };
 		CDB06CA9125048730F6F8EDD92103BD0 /* CacheSerializer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CacheSerializer.swift; path = Sources/CacheSerializer.swift; sourceTree = "<group>"; };
 		D7A3C90E9DF742791B93F3793008064F /* Kingfisher-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Kingfisher-prefix.pch"; sourceTree = "<group>"; };
 		DA220BA9DA443C4B07A8C2F40417D32C /* MQPhotoBrowser.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MQPhotoBrowser.xcconfig; sourceTree = "<group>"; };
@@ -183,21 +183,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		30D77D796EF0FFEDEAE934138466096B /* Resources */ = {
+		44A0CA58440942AC1E811FE8C014BB4C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				3BFEABC911B36F9A1CCE066A28139AA1 /* Assets */,
+				D559D568E3D2548E3072149D0576318E /* MQPhotoBrowser.bundle */,
 			);
 			name = Resources;
-			sourceTree = "<group>";
-		};
-		3BFEABC911B36F9A1CCE066A28139AA1 /* Assets */ = {
-			isa = PBXGroup;
-			children = (
-				C2D9DC646EAACD59A1AD84D2C3CEC574 /* MQPhotoBrowser.storyboard */,
-			);
-			name = Assets;
-			path = Assets;
 			sourceTree = "<group>";
 		};
 		6BE6794BE1D0147A47641BFD88E0C9B1 /* iOS */ = {
@@ -263,7 +254,7 @@
 		8D262889655715AD26C66B5971B4EE74 /* MQPhotoBrowser */ = {
 			isa = PBXGroup;
 			children = (
-				30D77D796EF0FFEDEAE934138466096B /* Resources */,
+				44A0CA58440942AC1E811FE8C014BB4C /* Resources */,
 				7026C35FB2FD46281425BB0C7EAC25F4 /* Sources */,
 				7DEC4DD02C3CC74A3758F1AAC1F9067C /* Support Files */,
 			);
@@ -334,6 +325,15 @@
 			);
 			name = "Pods-Sample";
 			path = "Target Support Files/Pods-Sample";
+			sourceTree = "<group>";
+		};
+		D559D568E3D2548E3072149D0576318E /* MQPhotoBrowser.bundle */ = {
+			isa = PBXGroup;
+			children = (
+				BA6A4D9F478A0E5B024DCA38BF37C9C0 /* MQPhotoBrowser.storyboard */,
+			);
+			name = MQPhotoBrowser.bundle;
+			path = MQPhotoBrowser.bundle;
 			sourceTree = "<group>";
 		};
 		DF56DAAF6901EA25B7722FFAC391B276 /* Support Files */ = {

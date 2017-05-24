@@ -1,6 +1,6 @@
 PODS:
   - Kingfisher (3.9.1)
-  - MQPhotoBrowser (0.1.0):
+  - MQPhotoBrowser (0.2.1):
     - Kingfisher
 
 DEPENDENCIES:
@@ -12,7 +12,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Kingfisher: 6729a0baaa458245bfb8cd5a1296c71c10d6eb6c
-  MQPhotoBrowser: 9c31c93ce83fcde50470df2562f1ff59e82cc1a4
+  MQPhotoBrowser: 259b466fc13fdf6d04c0dfc2962f3015d4449bd6
 
 PODFILE CHECKSUM: 6ce9ea9eb3e89a2cabbddb4e78f0b9b9c990da4f
 
